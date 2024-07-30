@@ -14,8 +14,7 @@ class Userscontroller extends Controller
     public function create(){
         return view('users.create');
     }
-
-    public function store( Request $request){
+    public function store(Request $request){
       $data = [
         'name'=> $request->get('name'),
         'email'=> $request->get('email'),
@@ -59,8 +58,8 @@ class Userscontroller extends Controller
                     'email'=> $request->get('email'),
                     'password'=> $request->get('password')
                 ];
-                
-                User::where('id', $id)->upadate($data);
+
+                User::where('id',$id)->update($data);
                 return redirect()->route('users.index');
             }
 

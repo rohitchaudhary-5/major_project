@@ -9,11 +9,14 @@ class Userscontroller extends Controller
     public function index(){
         $users = User::all();
         return view('users.index',compact('users'));
+        
     }
 
     public function create(){
         return view('users.create');
     }
+
+
     public function store(Request $request){
       $data = [
         'name'=> $request->get('name'),
@@ -22,18 +25,6 @@ class Userscontroller extends Controller
       ];
       User::insert($data);
       return redirect()->route('users.index');
-    }
-
-    public function delete($id){
-        if(!$id){
-            return redirect()-back();
-        }
-
-        $user = User::find($id);
-            if($user){
-                $user->delete();
-            }
-            return redirect()->back();
     }
 
     public function edit($id){
@@ -46,6 +37,7 @@ class Userscontroller extends Controller
         }
         return redirect()-back();
         }
+
 
         public function update(Request $request,$id){
             if(!$id){
@@ -65,7 +57,19 @@ class Userscontroller extends Controller
 
             return redirect()-back();
         }
-
+        
+        public function delete($id){
+            if(!$id){
+                return redirect()-back();
+            }
+    
+            $user = User::find($id);
+                if($user){
+                    $user->delete();
+                }
+                return redirect()->back();
+        }
+    
 
       }
 

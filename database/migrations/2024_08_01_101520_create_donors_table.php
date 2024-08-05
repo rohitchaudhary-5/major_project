@@ -17,8 +17,8 @@ class CreateDonorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->string('password');
             $table->integer('donation_amount');
+            $table->string('password');
             $table->timestamps();
         });
     }

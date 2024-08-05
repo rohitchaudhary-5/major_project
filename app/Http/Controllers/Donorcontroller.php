@@ -26,6 +26,17 @@ class Donorcontroller extends Controller
         return redirect()->route('donor.index');
     }
 
+    public function edit($id){
+        if(!$id){
+            return redirect()->back();
+        }
+        $donor = Donors::find($id);
+        if($donor){
+            return view('donors.edit', compact('donor'));
+        }
+        return redirect()->back();
+     }
+    
     public function update(Request $request, $id){
         if(!$id){
             return redirect()->back();
@@ -42,18 +53,12 @@ class Donorcontroller extends Controller
         Donors::where ('id', $id)->update($data);
         return redirect()->route('donor.index');
 }
-return redirect()->back();
+return redirect()-back();
  }
- public function edit($id){
-    if(!$id){
-        return redirect()->back();
-    }
-    $donor = Donors::find($id);
-    if($donor){
-        return view('donors.edit', compact('donor'));
-    }
-    return redirect()->back();
- }
+
+
+
+
  public function delete($id){
     if(!$id){
         return redirect()->back();

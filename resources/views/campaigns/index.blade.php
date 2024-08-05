@@ -21,6 +21,7 @@
       <th scope="col">Donation Amount</th>
       <th scope="col">description</th>
       <th scope="col">status</th>
+      <th scope="col">Image</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -34,10 +35,12 @@
       <td>{{ $campaign->donation ?? ''}}</td>
       <td>{{ $campaign->description ?? ''}}</td>
       <td>{{ $campaign->status ?? ''}}</td>
-      
+      <td><a href="{{asset('uploads').'/'.$campaign->image}}" target='_blank'><img src="{{ asset('uploads').'/'.$campaign->image}}" width="50" height="50" alt=""></a></td>
+
       <td>
 
-      <a href='{{route("campaign.edit",$campaign->id)}}'  class='btn btn-primary'> EDIT </a> |  <a  href="{{ route('campaign.delete',$campaign->id)}}" class="btn btn-danger">Delete</a></td>
+      <a href='{{route("campaign.edit",$campaign->id)}}'  class='btn btn-primary'> EDIT </a> <br>
+        <a  href="{{ route('campaign.delete',$campaign->id)}}" class="btn btn-danger">Delete</a></td>
       </td>
     </tr>
  

@@ -9,7 +9,7 @@
 </head>
 <body>
     
-<form action="{{ route('campaign.update', $campaign->id)}}" method='POST'>
+<form action='{{ route("campaign.update", $campaign->id)}}' method='POST' enctype="multipart/form-data">
     @csrf
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Campaign For</label>
@@ -31,7 +31,15 @@
     <label for="exampleInputEmail1" class="form-label">status</label>
     <input type="text" class="form-control" id="" aria-describedby="emailHelp" name='status' value='{{$campaign->status}}'>
   </div>    
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">image</label>
+    <input type="file" class="form-control" id="" aria-describedby="emailHelp" name='image'>
+  </div>  
+  @if ($campaign->image) 
+  <a href="{{asset('uploads').'/'.$campaign->image}}" target='_blank'><img src="{{ asset('uploads').'/'.$campaign->image}}" width="50" height="50" alt=""></a>
+  @endif
 
+ 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>
